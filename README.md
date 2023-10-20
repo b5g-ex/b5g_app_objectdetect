@@ -28,8 +28,8 @@ $ DEFAULT_BACKEND_SERVER="{:yolov3_wrapper_ex, :\"yolov3_wrapper_ex@127.0.0.1\"}
 ## 設定 (環境変数)
 | 項目 | 初期値 | 説明 |
 | --- | --- | --- |
-| NODE_NAME | "object_detection" | 起動する `node` の名前 |
+| NODE_NAME | "b5g_app_objectdetect" | 起動する `node` の名前 |
 | NODE_IPADDR | "127.0.0.1" | 起動する `node` のIPアドレス（`ifconfig` や `ip a` 等のコマンドで確認後入力してください） |
 | COOKIE | "idkp" | COOKIEの値 |
-| DEFAULT_BACKEND_SERVER | "{:yolov3_wrapper_ex, :\\"yolov3_wrapper_ex@127.0.0.1\\"}" | 画像認識用 Backend Server の名前 ([`GenServer.call/3`](https://hexdocs.pm/elixir/1.14.4/GenServer.html#call/3), [`Name Registration`](https://hexdocs.pm/elixir/1.14.4/GenServer.html#module-name-registration)) : 画面で `Backend` に `local` を選択した際の通信先 |
+| DEFAULT_BACKEND_SERVER | "{:yolov3_wrapper_ex, :\\"yolov3_wrapper_ex@127.0.0.1\\"}" | 画像認識用 Backend Server の名前 (参照: [GenServer.call/3](https://hexdocs.pm/elixir/1.14.4/GenServer.html#call/3), [Name Registration](https://hexdocs.pm/elixir/1.14.4/GenServer.html#module-name-registration)) \| 画面で `Backend` に `local` を選択した際の通信先 |
 | USE_GIOCCI | "false" | Giocci 連携の有効 / 無効設定 (`false`, `true`) |
