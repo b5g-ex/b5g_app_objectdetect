@@ -1,0 +1,77 @@
+<div class="mb-8">
+  <div>
+    <video autoplay muted playsinline id="video" style="transform: scaleX(-1);"></video>
+  </div>
+  <div class="mt-2">
+    <.form for={@form} phx-change="form_changed">
+      <.input
+        type="select"
+        label="YOLOv3 Model"
+        field={@form[:model]}
+        options={[
+          "320",
+          "416",
+          "608"
+        ]}
+      />
+      <.input
+        type="select"
+        label="Backend"
+        field={@form[:backend]}
+        options={@backend_options}
+      />
+    </.form>
+  </div>
+  <div class="mt-2">
+    <%= if @detecting do %>
+      <button
+        class="bg-blue-500 text-white font-bold py-2 px-4 rounded opacity-50 cursor-not-allowed"
+        disabled>検出中</button>
+    <% else %>
+      <button
+        type="button"
+        id="button"
+        class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+        phx-hook="DetectButton">検出</button>
+    <% end %>
+  </div>
+</div>
+<div>
+  <div class="mb-2">
+    <p class="text-sm">総処理時間: <%= @total_time %>秒</p>
+  </div>
+  <div class="mb-2">
+    <p class="text-sm">検出処理時間: <%= @processing_time %>秒</p>
+  </div>
+  <div class="w-full mb-8 overflow-hidden rounded-lg shadow-xs">
+    <div class="w-full overflow-x-auto">
+      <table class="w-full whitespace-no-wrap">
+        <thead>
+          <tr class="text-xs font-semibold tracking-wide text-left text-gray-500 uppercase border-b dark:border-gray-700 bg-gray-50 dark:text-gray-400 dark:bg-gray-800">
+            <th class="px-4 py-3">Class</th>
+            <th class="px-4 py-3">Score</th>
+            <th class="px-4 py-3">Box</th>
+          </tr>
+        </thead>
+        <tbody class="bg-white divide-y dark:divide-gray-700 dark:bg-gray-800">
+          <%= for item <- @detected_data do %>
+            <tr class="text-gray-700 dark:text-gray-400">
+              <td class="px-4 py-3 text-sm">
+                <%= item["class"] %>
+              </td>
+              <td class="px-4 py-3 text-sm">
+                <%= item["score"] %>
+              </td>
+              <td class="px-4 py-3 text-xs">
+                <%= inspect item["box"] %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div>
+    <img id="image" src={@data_url} alt="" />
+  </div>
+</div>
