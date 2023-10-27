@@ -45,7 +45,9 @@ defmodule B5gAppObjectdetect.MixProject do
       {:gettext, "~> 0.20"},
       {:jason, "~> 1.2"},
       {:plug_cowboy, "~> 2.5"},
-      {:evision, "~> 0.1"}
+
+      {:evision, "~> 0.1"},
+      {:giocci, "~> 0.1"}
     ]
   end
 
