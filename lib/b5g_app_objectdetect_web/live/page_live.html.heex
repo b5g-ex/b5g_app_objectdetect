@@ -1,13 +1,13 @@
 <div class="grid grid-cols-2">
 <div class="mb-8">
   <div>
-    検出対象：
+    Input Image:
     <video autoplay muted playsinline id="video" style="transform: scaleX(-1);"></video>
   </div>
 </div>
 <div class="mb-8">
   <div>
-    検出結果：
+    Detection Result:
     <img id="image" src={@data_url} alt="" />
   </div>
 </div>
@@ -36,22 +36,22 @@
     <%= if @detecting do %>
       <button
         class="bg-blue-500 text-white font-bold py-2 px-4 rounded opacity-50 cursor-not-allowed"
-        disabled>検出中</button>
+        disabled>detecting,,,</button>
     <% else %>
       <button
         type="button"
         id="button"
         class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-        phx-hook="DetectButton">検出</button>
+        phx-hook="DetectButton">DETECT</button>
     <% end %>
   </div>
 </div>
 <div class="mb-8">
   <div class="mb-2">
-    <p class="text-sm">総処理時間: <%= @total_time %>秒</p>
+    <p class="text-sm">Total Time inc Communication: <%= @total_time %> [sec]</p>
   </div>
   <div class="mb-2">
-    <p class="text-sm">検出処理時間: <%= @processing_time %>秒</p>
+    <p class="text-sm">Processing Time for Detection: <%= @processing_time %> [sec]</p>
   </div>
   <div class="w-full mb-8 overflow-hidden rounded-lg shadow-xs">
     <div class="w-full overflow-x-auto">
