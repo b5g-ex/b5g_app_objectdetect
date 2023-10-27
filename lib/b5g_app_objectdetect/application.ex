@@ -7,13 +7,15 @@ defmodule B5gAppObjectdetect.Application do
 
   @impl true
   def start(_type, _args) do
+    target_giocci_relay_name = System.get_env("TARGET_GIOCCI_RELAY_NAME") |> Code.eval_string |> elem(0)
     children = [
       # Start the Telemetry supervisor
       B5gAppObjectdetectWeb.Telemetry,
       # Start the PubSub system
       {Phoenix.PubSub, name: B5gAppObjectdetect.PubSub},
       # Start the Endpoint (http/https)
-      B5gAppObjectdetectWeb.Endpoint
+      B5gAppObjectdetectWeb.Endpoint,
+      {Giocci, [target_giocci_relay_name]}
       # Start a worker by calling: B5gAppObjectdetect.Worker.start_link(arg)
       # {B5gAppObjectdetect.Worker, arg}
     ]
